@@ -1,0 +1,508 @@
+NormalZombie:
+  Type: Zombie
+  Display: '&2Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 1-5 1
+  - stick 1-2 0.5
+  - oak_planks 2-5 0.5
+  - apple 1-2 0.75
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.18
+  Skills:
+  - setname{name='&2Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+
+FastZombie:
+  Type: Zombie
+  Display: '&2Fast Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 15
+  Damage: 1
+  Faction: Undead
+  Drops:
+  - exp 2-5 1
+  - string 1-2 0.5
+  - arrow 1-2 0.5
+  - apple 1-2 0.75
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - feather:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.30
+  Skills:
+  - setname{name='&2Fast Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+
+BuffZombie:
+  Type: Zombie
+  Display: '&2Buff Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 30
+  Damage: 3
+  Faction: Undead
+  Drops:
+  - exp 3-7 1
+  - cobblestone 1-2 1
+  - stick 1-2 0.5
+  - iron_ingot 1-2 0.25
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - wooden_sword:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.17
+  Skills:
+  - setname{name='&2Buff Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+
+FlameZombie:
+  Type: Zombie
+  Display: '&2Flame Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 5-8 1
+  - fire_charge 1-2 0.5
+  - iron_ingot 1-2 0.20
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - flint_and_steel:4
+  DamageModifiers:
+  - FIRE 0
+  - LAVA 0
+  - FIRE_TICK 0
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.18
+  Skills:
+  - setname{name='&2Flame Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - ignite{ticks=80) @target ~onAttack
+  - ignite{ticks=99999} @self ~onSpawn
+  - potion{type=FIRE_RESISTANCE;duration=99999;level=1} @self ~onSpawn
+
+SplitterZombie:
+  Type: Zombie
+  Display: '&2Splitter Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 9-14 1
+  - apple 2-3 0.5
+  - gold_ingot 1-3 0.4
+  - string 1-2 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - slime_ball:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.18
+  Skills:
+  - setname{name='&2Splitter Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - summon{type=NormalZombie;amount=3;radius=3} @self ~onDeath
+
+SpittingZombie:
+  Type: Zombie
+  Display: '&2Spitting Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 10-15 1
+  - arrow 2-3 0.5
+  - apple 1-2 0.5
+  - string 1-2 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - arrow:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.18
+  Skills:
+  - setname{name='&2Spitting Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - shoot{type=ARROW;velocity=1;damage=2} ~onTimer:60
+
+
+LeapingZombie:
+  Type: Zombie
+  Display: '&2Leaping Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 5
+  Faction: Undead
+  Drops:
+  - exp 10-16 1
+  - gold_ingot 1-3 0.6
+  - apple 1-2 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - rabbit_foot:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Skills:
+  - setname{name='&2Leaping Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - leap{velocity=200} @target ~onTimer:60
+
+BomberZombie:
+  Type: Zombie
+  Display: '&2Bomber Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 15
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 15-20 1
+  - gold_ingot 3-8 0.6
+  - oak_planks 1-2 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - tnt:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.25
+  Skills:
+  - setname{name='&2Bomber Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - skill{s=Explosion} ~onTimer:100
+  - explosion{y=1;f=false} @self ~onDeath
+  - effect:particles{particle=flame;amount=200;hS=0.6;vS=0.6;speed=1} @self ~onDeath
+  - damage{d=20} @PIR{r=6} ~onDeath
+
+GiantZombie:
+  Type: Zombie
+  Display: '&2Giant &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 1000
+  Damage: 15
+  Faction: Undead
+  Drops:
+  - exp 1000 1
+  - diamond 10-20 1
+  - gold_block 5-15 1
+  - apple 12-32 1
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - iron_helmet:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Disguise:
+    Type: Giant
+  Skills:
+  - setname{name='&2Giant &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - skill{s=GiantSmash} ~onTimer:50 0.5
+  - damage{d=25} @PIR{r=4} ~onTimer:20
+  - message{m="<mob.name>&f<&c> died and was reincarnated."} @PlayersInRadius{r=200} ~onDeath
+
+MountingZombie:
+  Type: Zombie
+  Display: '&2Mounting Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 2
+  Faction: Undead
+  Drops:
+  - exp 20-25 1
+  - iron_ingot 1-3 0.5
+  - apple 1-3 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - white_bed:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.28
+  Skills:
+  - setname{name='&2Mounting Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - skill{s=Mounting} ~onTimer:100
+
+MagicianZombie:
+  Type: Zombie
+  Display: '&2Magician Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 6
+  Faction: Undead
+  Drops:
+  - exp 25-30 1
+  - diamond 1-3 0.5
+  - iron_ingot 2-3 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - blaze_rod:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    ApplyInvisibility: true
+    Glowing: true
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Skills:
+  - setname{name='&2Magician Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - teleport{spreadh=1;spreadv=0} @PIR{r=30} ~onDamaged 1
+
+ArmoredZombie:
+  Type: Zombie
+  Display: '&2Armored Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 40
+  Damage: 5
+  Faction: Undead
+  Drops:
+  - exp 15-25 1
+  - iron_ingot 2-5 0.5
+  - gold_ingot 1-3 0.4
+  - diamond 1-2 0.25
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - iron_helmet:4
+  - iron_chestplate:3
+  - iron_leggings:2
+  - iron_boots:1
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.17
+  Skills:
+  - setname{name='&2Armored Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+
+FireballZombie:
+  Type: Zombie
+  Display: '&2Fireball Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 20
+  Damage: 5
+  Faction: Undead
+  Drops:
+  - exp 25-35 1
+  - fire_charge 1-3 0.5
+  - gold_ingot 2-4 0.4
+  - arrow 1-3 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - fire_charge:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Skills:
+  - setname{name='&2Fireball Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - shootfireball{y=1;v=0.25;sml=true} @target ~onTimer:60
+
+VampireZombie:
+  Type: Zombie
+  Display: '&2Vampire Zombie &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 50
+  Damage: 5
+  Faction: Undead
+  Drops:
+  - exp 30-35 1
+  - netherite_ingot 1-2 0.5
+  - diamond 1-2 0.5
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - ghast_tear:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Skills:
+  - setname{name='&2Vampire Zombie &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - consume{d=5;h=5} @PIR{r=5} ~onTimer:80
+
+Necromancer:
+  Type: Zombie
+  Display: '&2Necromancer &a<mob.hp>&2/&a<mob.mhp> ❤'
+  Health: 750
+  Damage: 10
+  Faction: Undead
+  Drops:
+  - exp 1000-2000 1
+  - netherite_ingot 12-32 1
+  - diamond 32-64 1
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 meleeattack
+  - 1 patrol 7.5,9,0.5;21.5,12,0.5
+  Skills: 
+  - threat{amount=1000} @PlayersInRadius{radius=20} ~onTimer:60
+  Equipment:
+  - wither_skeleton_skull:4
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+    PreventSunburn: true
+    Despawn: false
+    Glowing: true
+    FollowRange: 10
+    MovementSpeed: 0.20
+  Skills:
+  - setname{name='&2Necromancer &a<caster.hp>&2/&a<caster.mhp> ❤'} @self ~onDamaged 1
+  - summon{type=VampireZombie;a=1;r=4} @self ~onTimer:200 1
+  - summon{type=SpittingZombie;a=1;r=4} @self ~onTimer:200 0.6
+  - summon{type=FireballZombie;a=1;r=4} @self ~onTimer:200 0.6
+  - teleport{spreadh=1;spreadv=1} @self ~onDamaged
+  - skill{s=EnergyBall} @PIR{r=15} ~onTimer:100
+  - message{m="<mob.name>&f<&c> died and wants a rematch."} @PlayersInRadius{r=10} ~onDeath

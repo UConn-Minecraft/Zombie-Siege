@@ -1,0 +1,48 @@
+EnergyBall:
+  Skills:
+  - projectile{onTick=EnergyBall-Tick;onHit=EnergyBall-Hit;v=10;i=1;hR=0.5;vR=0.5;mr=24;hnp=true}
+EnergyBall-Tick:
+  Skills:
+  - effect:itemspray{item=yellow_dye;amount=1} @origin
+EnergyBall-Hit:
+  Skills:
+  - damage{a=35}
+  - stun{d=60;f=true}
+  - effect:particles{particle=reddust;amount=20;hS=1;vS=1;speed=1}
+
+GiantSmash:
+  Conditions:
+  - playerwithin{d=12}
+  Skills:
+  - effect:particleorbital{p=reddust;color=#585a4d;a=10;points=64;an=1;hs=0;vs=0;s=0;y=2;ticks=40;in=1;rx=0;ry=0;r=1;yOffset=0.7} @self
+  - delay 40
+  - lunge{velocity=1;velocityY=2} @Self
+  - delay 20
+  - jump{velocity=-100}
+  - delay 10
+  - damage{a=30} @EIR{r=7;types=players}
+  - throw{velocity=5;velocityY=10} @EIR{r=7;types=players}
+
+Explosion:
+  Conditions:
+  - playerwithin{d=3}
+  Skills:
+  - equip{item=white_stained_glass:4}
+  - delay 10
+  - equip{item=TNT:4}
+  - delay 10
+  - equip{item=white_stained_glass:4}
+  - delay 10
+  - equip{item=TNT:4}
+  - delay 10
+  - equip{item=white_stained_glass:4}
+  - delay 10
+  - equip{item=TNT:4}
+  - delay 5
+  - suicide @self
+
+Mounting:
+  Conditions:
+  - mounted{} false
+  Skills:
+  - mountme @EIR{r=5;limit=1;sort=NEAREST} ~onTimer:100
